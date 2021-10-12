@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from "prop-types";
+import axios from "axios";
 
 // componentDidMount() 에서 data를 fetch하고,
 // fetch가 완료되면 render()를 통해 화면에 그린다.
@@ -10,11 +10,13 @@ class App extends React.Component {
     movies: []
   };
 
+  getMovies = async () => {
+    // axios의 로딩이 끝나면 그 때 get을 실행해줘.
+    const movies = await axios.get("https://yts.mx/api/v2/list_movies.json");
+  };
+
   componentDidMount() {
-    // data fetch 하는 부분... 완료 되면 render 실행.
-    setTimeout(() => {
-      this.setState({ isLoading: false });
-    }, 5000);
+    this.getMovies();
   }
 
   render() {
