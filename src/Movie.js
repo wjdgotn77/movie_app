@@ -5,19 +5,19 @@ import "./Movie.css";
 //function Component의 인자로 props말고 props의 특정값만을 가지고 올때는 curly braket으로 감싸기!
 function Movie({ id, year, title, summary, poster, genres }) {
   return (
-    <div class="movie">
+    <div className="movie">
       <img src={poster} alt={title} title={title} />
-      <div class="movie__data">
-        <h3 class="movie__title">{title}</h3>
-        <h5 class="movie__year">{year}</h5>
-        <ul className="genres">
+      <div className="movie__data">
+        <h3 className="movie__title">{title}</h3>
+        <h5 className="movie__year">{year}</h5>
+        <ul className="movie__genres">
           {genres.map((genre, index) => (
             <li key={index} className="genres__genre">
               {genre}
             </li>
           ))}
         </ul>
-        <p class="movie__summary">{summary}</p>
+        <p className="movie__summary">{summary.slice(0, 140)}...</p>
       </div>
     </div>
   );
