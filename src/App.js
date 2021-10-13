@@ -16,8 +16,9 @@ class App extends React.Component {
     /* axios의 로딩이 끝나면 그 때 get을 실행해줘.
      * const movies = await axios.get("https://yts.mx/api/v2/list_movies.json");
      * console.log(movies.data.data.movies);
+     *  ES6 문법으로 위의 코드 작성.
+     * const { data : { data : { movies }}} = await axios.get("https://yts.mx/api/v2/list_movies.json?sort_by=rating");
      */
-    // ES6 문법으로 위의 코드 작성.
     const {
       data: {
         data: { movies },
@@ -36,10 +37,14 @@ class App extends React.Component {
     // ES6 Destructoring assignment.
     const { isLoading, movies } = this.state;
     return (
-      <div>
-        {isLoading
-          ? "Loading..."
-          : movies.map((movie) => (
+      <section class="container">
+        {isLoading ? (
+          <div class="loader">
+            <span class="loader__text">"Loading..."</span>
+          </div>
+        ) : (
+          <div class="movies">
+            {movies.map((movie) => (
               <Movie
                 key={movie.id}
                 id={movie.id}
@@ -49,7 +54,9 @@ class App extends React.Component {
                 poster={movie.medium_cover_image}
               />
             ))}
-      </div>
+          </div>
+        )}
+      </section>
     );
   }
 }
