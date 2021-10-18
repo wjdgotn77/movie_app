@@ -1,7 +1,7 @@
 .movies .movie {
   width: 45%;
   min-width: 470px;
-  height: 45%;
+  height: 300px;
   background-color: white;
   margin-bottom: 70px;
   display: flex;
