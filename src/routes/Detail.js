@@ -1,9 +1,9 @@
 import React from "react";
+import "./Detail.css";
 
 class Detail extends React.Component {
   componentDidMount() {
     const { location, history } = this.props;
-    console.log(location.state);
     if (location.state === undefined) {
       history.push("/");
     }
@@ -14,8 +14,14 @@ class Detail extends React.Component {
       return (
         <div className="detail-container">
           <h1 className="detail-title">{location.state.title}</h1>
-          <div className="detail-year">{location.state.year}</div>
-          <div className="detatil-summary">{location.state.summary}</div>
+          <div className="detail-contents">
+            <img
+              className="detail-img"
+              src={location.state.poster}
+              alt={location.state.title}
+            />
+            <div className="detail-summary">{location.state.summary}</div>
+          </div>
         </div>
       );
     } else {
