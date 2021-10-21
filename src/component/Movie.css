@@ -1,3 +1,7 @@
+/*
+ * Link컴포넌트는 리액트에서 ReactDOM에 의해 a태그로 변환되서 보여짐.
+ * display: contents -> container를 사라지게하여 DOM에서 다음 단계의 하위 요소를 생성.
+*/
 .movies a {
   display: contents;
   text-decoration: none;
